@@ -13,14 +13,19 @@ const Home = () => {
     },
   ]);
 
+  const handleDelete = (id) => {
+    const newBlogs = blogs.filter((blog) => blog.id !== id);
+    setBlogs(newBlogs);
+  };
+
   //props allow to pass from parents component to child components
   return (
     <div className="home">
-      <BlogList blogs={blogs} title="All Blogs" />
-      <BlogList
+      <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete} />
+      {/* <BlogList
         blogs={blogs.filter((blog) => blog.author === "mario")}
         title="Mario's Blogs"
-      />
+      /> */}
     </div>
   );
 };
